@@ -28,7 +28,9 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## This function will check to see if the score has already been calculated, 
+## if it has, it will retrieve it, if not it will calcultate it and store it for
+## later use.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
