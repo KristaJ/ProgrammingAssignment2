@@ -16,15 +16,15 @@ makeCacheMatrix <- function(x = matrix()) {
         get <- function(){ 
                 x
         }
-        setScore <- function(score){ 
-                s<<-score
+        setSolve <- function(solve){ 
+                s<<-solve
         }
-        getScore <- function(){##returns the var s
+        getSolve <- function(){##returns the var s
                 s
         }
         ## populates a list with the functions developed above
-        list(set = set, get = get, setScore = setScore, getScore = getScore)
-
+        list(set = set, get = get, setSolve = setSolve, getSolve = getSolve)
+        
 }
 
 
@@ -34,16 +34,17 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-        s<- x$getScore ##assigns the inverse matrix to S by calling the getScore function
-        if(!is.null(m)){##checks to see that m has been assigned a value
+        s<- x$getSolve() ##assigns the inverse matrix to S by calling the getSolve function
+        if(!is.null(s)){##checks to see that m has been assigned a value
                 message("Getting cached data.") ##If m has been assinged a value then 
                 return(s)                       ##the function just retrieves the already
-                                                ##calculated value            
+                ##calculated value            
         }
         data <- x$get() ##if the if loop fails (score has not been calculate
-                        ## previously), the function puts the matrix in 'data'
+        ## previously), the function puts the matrix in 'data'
         
-        s <- score(data) ##calculates the score and assigns it to s
-        x$setScore(s)   ##Sets the newly calculated score to x by calling the 
-                        ##setScore function       
+        s <- solve(data) ##calculates the score and assigns it to s
+        x$setSolve(s)   ##Sets the newly calculated score to x by calling the 
+        s
+        ##setSolve function       
 }
